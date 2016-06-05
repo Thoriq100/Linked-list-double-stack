@@ -1,0 +1,267 @@
+#include <iostream>
+#include <cstdlib>
+#define max 3
+using namespace std;
+
+
+int isi=0,menu,n=max;
+char ulang,s[100];
+
+
+  struct tanggal
+    {
+        int tanggal;
+        int bulan;
+        int tahun;
+    };
+
+    struct data
+    {
+        char nama[100];
+        char alamat[100];
+        char jurusan[100];
+        int angkatan;
+        int umur;
+        int npm;
+        tanggal tanggal_daftar;
+        data *next;
+        data *prev;
+    } ; 
+ data *baru, *awal, *akhir, *hapus, *b1, *t1;
+	data *awal1,*aki,*t2,*b2;
+    int top1=0,top2=max-1;
+    void push1(){
+    	if(top1==max){
+    		cout<<"Data penuh"<<endl;
+		}else
+                    system("cls");
+                    t1=new data;
+                    cout<<"------------------------------------------------\n";
+                    cout<<"Indeks ke "<<isi+1<<endl;
+                    cout<<"------------------------------------------------\n";
+                    cout<<"Masukkan Nama Anda    : ";
+                    cin>>t1->nama;
+                    cout<<"Masukkan Alamat Anda  : ";
+                    cin>>t1->alamat;
+                    cout<<"Anda Jurusan Apa      : ";
+                    cin>>t1->jurusan;
+                    cout<<"Angkatan Tahun Berapa : ";
+                    cin>>t1->angkatan;
+                    cout<<"Berapa Umur Anda      : ";
+                    cin>>t1->umur;
+                    cout<<"Berapa Npm anda       : ";
+                    cin>>t1->npm;
+                    cout<<"------------------------------------------------\n";
+                    cout<<"Kapan Anda Mendaftar ? \n";
+                    cout<<endl;
+                    cout<<"Tanggal               = ";
+                    cin>>t1->tanggal_daftar.tanggal>>t1->tanggal_daftar.bulan>>
+                    t1->tanggal_daftar.tahun;
+                    cout<<"------------------------------------------------\n";
+                    cout<<endl;
+                    isi++;
+                    t1->next = NULL;
+                    t1->prev = NULL;
+
+                    if(awal==NULL){
+                    awal=t1;
+                    akhir=t1;
+                    }
+                    else{
+                    t1->prev = akhir;
+                    akhir->next = t1;
+                    akhir=t1;
+                    }
+                    top1=top1+1;
+}
+void push2(){
+		if(top2==max){
+			cout<<"data penuh"<<endl;
+		}else{
+		
+                    system("cls");
+                    t2=new data;
+                    cout<<"------------------------------------------------\n";
+                    cout<<"Indeks ke "<<n<<endl;
+                    cout<<"------------------------------------------------\n";
+                    cout<<"Masukkan Nama Anda    : ";
+                    cin>>t2->nama;
+                    cout<<"Masukkan Alamat Anda  : ";
+                    cin>>t2->alamat;
+                    cout<<"Anda Jurusan Apa      : ";
+                    cin>>t2->jurusan;
+                    cout<<"Angkatan Tahun Berapa : ";
+                    cin>>t2->angkatan;
+                    cout<<"Berapa Umur Anda      : ";
+                    cin>>t2->umur;
+                    cout<<"Berapa Npm anda       : ";
+                    cin>>t2->npm;
+                    cout<<"------------------------------------------------\n";
+                    cout<<"Kapan Anda Mendaftar ? \n";
+                    cout<<endl;
+                    cout<<"Tanggal               = ";
+                    cin>>t2->tanggal_daftar.tanggal>>t2->tanggal_daftar.bulan>>
+                    t2->tanggal_daftar.tahun;
+                    cout<<"------------------------------------------------\n";
+                    cout<<endl;
+                    n--;
+                    t2->next = NULL;
+                    t2->prev = NULL;
+
+                    if(aki==NULL){
+                    awal1=t2;
+                    aki=t2;
+                    }
+                    else{
+                    t2->next=awal1;
+                    awal1->prev=t2;
+                    awal1=t2;
+                    }
+                    top2=top2-1;
+                }
+}
+void pop1()
+{
+
+}
+void pop2()
+{
+
+
+}
+void tampil1()
+{
+     b1=t1;
+     if (b1==NULL) {
+     cout<<"Isi stack 1 kosong. Masukkan stack terlebih dahulu!";
+     } else {
+        while(b1!=NULL)
+        {
+        cout<<"------------------------------------------------\n";
+        cout<<"Indeks ke "<<isi<<endl;
+        cout<<"------------------------------------------------\n";
+        cout<<"================================================\n";
+        cout<<"|| Nama Anda           : "<<b1->nama<<endl;
+        cout<<"|| Alamat Anda         : "<<b1->alamat<<endl;
+        cout<<"|| Jurusan             : "<<b1->jurusan<<endl;
+        cout<<"|| Angkatan Tahun      : "<<b1->angkatan<<endl;
+        cout<<"|| Umur Anda           : "<<b1->umur<<endl;
+        cout<<"|| Npm Anda            : "<<b1->npm<<endl;
+        cout<<"------------------------------------------------\n";
+        cout<<"|| Anda Mendaftar Pada : ";
+        cout<<endl;
+        cout<<"|| Tanggal             : "<<b1->tanggal_daftar.tanggal<<"-"<<
+        b1->tanggal_daftar.bulan<<"-"<<b1->tanggal_daftar.tahun<<endl;
+        cout<<"================================================\n";
+        cout<<endl;
+        b1=b1->prev;
+        isi--;
+    }
+}
+    }
+void tampil2()
+{
+    b2=t2;
+     if (b2==NULL) {
+     cout<<"Isi stack 2 kosong. Masukkan stack terlebih dahulu!";
+        } else {
+        while(b2!=NULL)
+        {
+        cout<<"------------------------------------------------\n";
+        cout<<"Indeks ke "<<n+1<<endl;
+        cout<<"------------------------------------------------\n";
+        cout<<"================================================\n";
+        cout<<"|| Nama Anda           : "<<b2->nama<<endl;
+        cout<<"|| Alamat Anda         : "<<b2->alamat<<endl;
+        cout<<"|| Jurusan             : "<<b2->jurusan<<endl;
+        cout<<"|| Angkatan Tahun      : "<<b2->angkatan<<endl;
+        cout<<"|| Umur Anda           : "<<b2->umur<<endl;
+        cout<<"|| Npm Anda            : "<<b2->npm<<endl;
+        cout<<"------------------------------------------------\n";
+        cout<<"|| Anda Mendaftar Pada : ";
+        cout<<endl;
+        cout<<"|| Tanggal             : "<<b2->tanggal_daftar.tanggal<<"-"<<
+        b2->tanggal_daftar.bulan<<"-"<<b2->tanggal_daftar.tahun<<endl;
+        cout<<"================================================\n";
+        cout<<endl;
+        b2=b2->next;
+        n++;
+    }
+}
+}
+
+main()
+{
+    do{
+    system("cls");
+    cout<<"\t Pilihannya Adalah \n";
+    cout<<"1. Push \n";
+    cout<<"2. Pop \n";
+    cout<<"3. View \n";
+    cout<<endl;
+    cout<<"Nb. maks data 10\n";
+    cout<<"=======================\n";
+    cout<<"Masukkan pilihan anda = ";
+    cin>>menu;
+    cout<<endl;
+    switch(menu){
+        case 1 : system("cls");
+                 do{
+                 system("cls");
+                 cout<<"1. Push1\n";
+                 cout<<"2. Push2\n";
+                 cout<<"pilih mana : ";
+                 cin>>menu;
+                 if(menu==1){
+                    push1();
+                 }
+                 if(menu==2){
+                    push2();
+                    }
+                 cout<<"apakah ingin input lagi [y/t] ? ";
+                 cin>>ulang;
+                }while(ulang=='y');
+                 break;
+        case 2 : system("cls");
+                 cout<<"anda pilih mana ? \n";
+                 cout<<"1. pop1\n";
+                 cout<<"2. pop2\n";
+                 cout<<"anda pilih : ";
+                 cin>>menu;
+                 if(menu==1){
+                    system("cls");
+                    pop1();
+                    break;
+                 }
+                 else if(menu==2){
+                    system("cls");
+                    pop2();
+                    break;
+                 }
+                 break;
+        case 3 : system("cls");
+                 do{
+                 system("cls");
+                 cout<<"ingin melihat stack 1 atau 2 ? ";
+                 cin>>menu;
+                 if(menu==1){
+                 system("cls");
+                 tampil1();
+                 }
+                 else if(menu==2)
+                 {
+                 system("cls");
+                 tampil2();
+                 }
+                 else {
+                        cout<<"pilihan tidak ada\n";
+                 }
+                 cout<<"apakah ingin melihat lagi [y/t] ? ";
+                 cin>>ulang;
+                 }while(ulang=='y');
+
+    }system("cls");
+         cout<<"ingin kembali ke menu utama [y/t] ? ";
+         cin>>ulang;
+    }while(ulang=='y');
+}
