@@ -1,0 +1,219 @@
+#include <iostream>
+#define max 5
+using namespace std;
+
+
+int isi=0,menu,n=max;
+char ulang,s[100];
+
+
+  struct tanggal
+    {
+        int tanggal;
+        int bulan;
+        int tahun;
+    };
+
+    struct data
+    {
+        char nama[100];
+        char alamat[100];
+        char jurusan[100];
+        int angkatan;
+        int umur;
+        int npm;
+        tanggal tanggal_daftar;
+        data *next;
+       
+    } ; data *baru, *awal, *akhir, *hapus, *b1, *b2, *t1, *t2,*bantu;
+    
+    int pil,top1=0,top2=max-1;
+    main(){
+    	
+    	do{
+    		cout<<"1.push1"<<endl;
+    		cout<<"2.push2"<<endl;
+    		cout<<"3.pop1"<<endl;
+    		cout<<"4.pop2"<<endl;
+    		cout<<"5.view"<<endl;
+    		cout<<"pilih :";
+    		cin>>pil;
+    		switch(pil){
+    			case 1:
+    				if(top1==max){
+    					
+    					cout<<"Antrian penuh"<<endl;
+					}else{
+					t1=new data;
+					cout<<"Masukkan Nama Anda    : ";
+                    cin>>t1->nama;
+                    cout<<"Masukkan Alamat Anda  : ";
+                    cin>>t1->alamat;
+                    cout<<"Anda Jurusan Apa      : ";
+                    cin>>t1->jurusan;
+                    cout<<"Angkatan Tahun Berapa : ";
+                    cin>>t1->angkatan;
+                    cout<<"Berapa Umur Anda      : ";
+                    cin>>t1->umur;
+                    cout<<"Berapa Npm anda       : ";
+                    cin>>t1->npm;
+                    cout<<"------------------------------------------------\n";
+                    cout<<"Kapan Anda Mendaftar ? \n";
+                    cout<<endl;
+                    cout<<"Tanggal               = ";
+                    cin>>t1->tanggal_daftar.tanggal>>t1->tanggal_daftar.bulan>>
+                    t1->tanggal_daftar.tahun;
+                    cout<<"------------------------------------------------\n";
+                    cout<<endl;
+					    if(awal==NULL){
+					awal=t1;
+					awal->next=NULL;
+  					}else{
+					t1->next=awal;
+					awal=t1;
+   					}
+		top1=top1+1;			
+		}
+		break;
+    				
+    				case 2:
+    							if(top2==max){
+    					
+    					cout<<"Antrian penuh"<<endl;
+					}else{
+					t1=new data;
+					cout<<"Masukkan Nama Anda    : ";
+                    cin>>t1->nama;
+                    cout<<"Masukkan Alamat Anda  : ";
+                    cin>>t1->alamat;
+                    cout<<"Anda Jurusan Apa      : ";
+                    cin>>t1->jurusan;
+                    cout<<"Angkatan Tahun Berapa : ";
+                    cin>>t1->angkatan;
+                    cout<<"Berapa Umur Anda      : ";
+                    cin>>t1->umur;
+                    cout<<"Berapa Npm anda       : ";
+                    cin>>t1->npm;
+                    cout<<"------------------------------------------------\n";
+                    cout<<"Kapan Anda Mendaftar ? \n";
+                    cout<<endl;
+                    cout<<"Tanggal               = ";
+                    cin>>t1->tanggal_daftar.tanggal>>t1->tanggal_daftar.bulan>>
+                    t1->tanggal_daftar.tahun;
+                    cout<<"------------------------------------------------\n";
+                    cout<<endl;
+                    if(awal==NULL){
+					awal=t1;
+					awal->next=NULL;
+					}else{
+					bantu=awal;
+					while(bantu->next!=NULL){
+					bantu=bantu->next;
+    				}
+					bantu->next=t1;
+					}
+					top2=top2-1;
+					
+		}break;
+		case 3:
+			if (top2<0){
+				cout<<"kosong data"<<endl;
+		}else{
+			if(awal!=NULL){
+			cout<<"data yang anda pop1"<<endl;
+			cout<<"Nama Anda             : "<<t1->nama<<endl;
+            cout<<"Alamat Anda           : "<<t1->alamat<<endl;
+            cout<<"Anda Jurusan Apa      : "<<t1->jurusan<<endl;
+            cout<<"Angkatan Tahun        :"<<t1->angkatan<<endl;
+            cout<<"Umur Anda             : "<<t1->umur<<endl;
+            cout<<" Npm anda       : "<<t1->npm;
+            cout<<"Tanggal               = "<<t1->tanggal_daftar.tanggal<<t1->tanggal_daftar.bulan<<t1->tanggal_daftar.tahun;
+			system("pause");
+			
+		
+			if(awal->next!=NULL){
+			hapus=awal;
+			awal=awal->next;
+			delete hapus;
+			system("cls");
+			}else{
+			awal=NULL;
+			}
+		}
+		top1=top1-1;
+		}break;
+		case 4:
+				if (top1<0){
+				cout<<"kosong data"<<endl;
+		}else{
+			if(awal!=NULL){
+			cout<<"data yang anda pop2"<<endl;
+			cout<<"Nama Anda             : "<<t1->nama<<endl;
+            cout<<"Alamat Anda           : "<<t1->alamat<<endl;
+            cout<<"Anda Jurusan Apa      : "<<t1->jurusan<<endl;
+            cout<<"Angkatan Tahun        :"<<t1->angkatan<<endl;
+            cout<<"Umur Anda             : "<<t1->umur<<endl;
+            cout<<" Npm anda       : "<<t1->npm;
+            cout<<"Tanggal               = "<<t1->tanggal_daftar.tanggal<<t1->tanggal_daftar.bulan<<t1->tanggal_daftar.tahun;
+			system("pause");
+			
+		
+			if(awal->next!=NULL){
+			bantu=awal;
+			while(bantu->next->next!=NULL){
+			bantu=bantu->next;
+			}
+			hapus=bantu->next;
+			bantu->next=NULL;
+			delete hapus;
+			system("cls");
+			}else{
+			awal=NULL;
+		}
+		top2=top2+1;
+		}
+	}break;
+    			case 5:
+    				bantu=awal;
+    				while(bantu!=NULL){
+    					
+    					
+    		cout<<"data yang anda pop2"<<endl;
+			cout<<"Nama Anda             : "<<bantu->nama<<endl;
+            cout<<"Alamat Anda           : "<<bantu->alamat<<endl;
+            cout<<"Anda Jurusan Apa      : "<<bantu->jurusan<<endl;
+            cout<<"Angkatan Tahun        :"<<bantu->angkatan<<endl;
+            cout<<"Umur Anda             : "<<bantu->umur<<endl;
+            cout<<" Npm anda       : "<<bantu->npm<<endl;
+            cout<<"Tanggal               = "<<bantu->tanggal_daftar.tanggal<<bantu->tanggal_daftar.bulan<<bantu->tanggal_daftar.tahun<<endl;
+  
+                            bantu=bantu->next;   					
+					}break;
+    			
+    			
+    			
+    			
+    			
+    			
+    			
+    			
+    			
+    			
+    			
+    			
+    			
+    			
+    			
+			}
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+		}while(pil<6);
+    	
+    	
+    	
+	}
